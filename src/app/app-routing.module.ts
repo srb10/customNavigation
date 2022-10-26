@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'modal-content',
+    loadChildren: () => import('./pages/modal-content/modal-content.module').then( m => m.ModalContentPageModule)
+  },
+  {
+    path: 'modal-two',
+    loadChildren: () => import('./pages/modal-two/modal-two.module').then( m => m.ModalTwoPageModule)
+  },
 ];
 
 @NgModule({
