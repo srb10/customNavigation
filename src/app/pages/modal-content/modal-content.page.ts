@@ -10,7 +10,17 @@ export class ModalContentPage implements OnInit {
   level = 0;
   nextPage = ModalContentPage;
 
-  constructor(private modalController: ModalController, private nav: IonNav) {
+  constructor(private modalController: ModalController,
+              private nav: IonNav, private platform: Platform) {
+    this.platform.backButton.subscribeWithPriority(101, async () => {
+      const canGoBack = await this.nav.canGoBack();
+      if (canGoBack) {
+        this.nav.pop();
+      } else {
+        await this.modalController.dismiss();
+      }
+      return;
+    });
   }
 
   ngOnInit() {
