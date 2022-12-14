@@ -22,6 +22,7 @@ export class HomePage {
       component: ModalBaseComponent,
       componentProps: {
         rootPage: ModalContentPage,
+        params: {stuff1: 'one', stuff2: 'two'}
       },
     });
 

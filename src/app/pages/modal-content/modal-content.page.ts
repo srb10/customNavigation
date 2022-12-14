@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, IonNav, Platform } from '@ionic/angular';
+import { ModalController, IonNav, Platform, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-content',
@@ -9,9 +9,13 @@ import { ModalController, IonNav, Platform } from '@ionic/angular';
 export class ModalContentPage implements OnInit {
   level = 0;
   nextPage = ModalContentPage;
+  otherStuff;
 
   constructor(private modalController: ModalController,
-              private nav: IonNav, private platform: Platform) {
+              private nav: IonNav,
+              private navParams: NavParams,
+              private platform: Platform
+  ) {
     this.platform.backButton.subscribeWithPriority(101, async () => {
       const canGoBack = await this.nav.canGoBack();
       if (canGoBack) {
@@ -21,9 +25,12 @@ export class ModalContentPage implements OnInit {
       }
       return;
     });
+
+    console.log('MY ROOT: ', this.navParams.data);
   }
 
   ngOnInit() {
+    console.log('otherStuff:', this.otherStuff);
   }
 
   goForward() {

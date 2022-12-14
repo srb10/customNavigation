@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+// A pair from the same module
 import { ModalContentPageRoutingModule } from './modal-content-routing.module';
-
 import { ModalContentPage } from './modal-content.page';
 
 @NgModule({
